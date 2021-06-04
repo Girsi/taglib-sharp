@@ -153,7 +153,7 @@ namespace TagLib.Ogg
 			// inserted in bytes 22-25 of the page header.
 
 			ByteVector checksum = ByteVector.FromUInt (
-				data.Checksum, false);
+				data.CRC32, false);
 
 			for (int i = 0; i < 4; i++)
 				data[i + 22] = checksum[i];
@@ -277,7 +277,7 @@ namespace TagLib.Ogg
 						page_data[i] = 0;
 
 					new_data.Add (ByteVector.FromUInt (
-						page_data.Checksum, false));
+						page_data.CRC32, false));
 					file.Seek (position + 18);
 					file.WriteBlock (new_data);
 				}

@@ -254,11 +254,7 @@ namespace TagLib.Mpeg
 
 			// Check for a Xing header that will help us in
 			// gathering information about a VBR stream.
-			file.Seek (position + XingHeader.XingHeaderOffset (Version, ChannelMode));
-
-			ByteVector xing_data = file.ReadBlock (16);
-			if (xing_data.Count == 16 && xing_data.StartsWith (XingHeader.FileIdentifier))
-				xing_header = new XingHeader (xing_data);
+			xing_header = XingHeader.TryParseXingHeader (file, position, Version, ChannelMode);
 
 			if (xing_header.Present)
 				return;

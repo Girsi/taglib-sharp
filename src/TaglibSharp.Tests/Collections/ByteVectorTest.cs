@@ -113,7 +113,7 @@ namespace TaglibSharp.Tests.Collections
 		public void FromUri ()
 		{
 			var vector = ByteVector.FromPath (TestPath.Samples + "vector.bin");
-			Assert.AreEqual (3282169185, vector.Checksum);
+			Assert.AreEqual (3282169185, vector.CRC32);
 			Assert.AreEqual ("1aaa46c484d70c7c80510a5f99e7805d", MD5Hash (vector.Data));
 		}
 
